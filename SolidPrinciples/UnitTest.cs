@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolidPrinciples
 {
-    class UnitTest
+    public static class UnitTest
     {
     }
 }
