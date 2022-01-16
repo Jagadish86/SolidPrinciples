@@ -44,7 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISP\Classes\Circle.cs" />
+    <Compile Include="ISP\Classes\Order\OfflineOrder.cs" />
+    <Compile Include="ISP\Classes\Order\OnlineOrder.cs" />
+    <Compile Include="ISP\Classes\Shape.cs" />
+    <Compile Include="ISP\Classes\Triangle.cs" />
+    <Compile Include="ISP\Interfaces\Order\IOnlineOrder.cs" />
+    <Compile Include="ISP\Interfaces\Order\IOrder.cs" />
     <Compile Include="LooseCoupling\CustomerRepository.cs" />
+    <Compile Include="OCP\Invoice.cs" />
     <Compile Include="PrivateClass.cs" />
     <Compile Include="SRP\DataAccess.cs" />
     <Compile Include="ISP\Classes\ToyHouse.cs" />

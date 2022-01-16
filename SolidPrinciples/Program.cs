@@ -1,4 +1,5 @@
 ﻿using SolidPrinciples.ISP.Classes;
+using SolidPrinciples.ISP.Classes.Order;
 using SolidPrinciples.LooseCoupling;
 using SolidPrinciples.LSP;
 using SolidPrinciples.OCP;
@@ -70,11 +71,15 @@ namespace SolidPrinciples
             };
             Console.WriteLine("Area of a rectangle " + rectangle.Area());
 
-            Circle circle = new Circle
+            OCP.Circle circle = new OCP.Circle
             {
                 Radius = 3
             };
             Console.WriteLine("Area of a circle " + circle.Area());
+
+            /* * OCP * */
+            FinalInvoice finalInvoice = new FinalInvoice();
+            Console.WriteLine($"Final invoice amount: {finalInvoice.GetInvoiceDiscount(50)}");
 
             Console.WriteLine("");
 
@@ -102,6 +107,21 @@ namespace SolidPrinciples
             ToyTrain toyTrain = new ToyTrain();
             toyTrain.Run();
             toyTrain.Stop();
+
+            ISP.Classes.Shape s = new Triangle();
+            Console.WriteLine($"Shape : {s.GetShape()}");
+
+            s = new ISP.Classes.Circle();
+            Console.WriteLine($"Shape : {s.GetShape()}");
+
+            OfflineOrder offlineOrder = new OfflineOrder();
+            offlineOrder.AddToCart();
+            
+
+            OnlineOrder onlineOrder = new OnlineOrder();
+            onlineOrder.AddToCart();
+            onlineOrder.CCProcess();
+
 
             BMW b = new BMW();
             b.StartEngine();
