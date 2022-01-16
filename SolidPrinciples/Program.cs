@@ -2,6 +2,7 @@
 using SolidPrinciples.LooseCoupling;
 using SolidPrinciples.LSP;
 using SolidPrinciples.OCP;
+using SolidPrinciples.SRP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,9 @@ namespace SolidPrinciples
 
             Console.WriteLine("Open Closed Principle");
             Console.WriteLine("---------------------");
+
+            Employee employee = new Employee(new Payroll());
+            employee.GetEmployeeDetails(8);
 
             // Open CLosed Principle
             Rectangle rectangle = new Rectangle

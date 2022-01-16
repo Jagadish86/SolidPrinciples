@@ -51,12 +51,15 @@
     <Compile Include="ISP\Classes\ToyTrain.cs" />
     <Compile Include="ISP\Interfaces\IToy.cs" />
     <Compile Include="ISP\Interfaces\IToyAction.cs" />
+    <Compile Include="SRP\Employee.cs" />
     <Compile Include="SRP\GarageStation.cs" />
+    <Compile Include="SRP\Interfaces\IPayroll.cs" />
     <Compile Include="SRP\Logger.cs" />
     <Compile Include="LSP\Customer.cs" />
     <Compile Include="OCP\Shape.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SRP\Payroll.cs" />
     <Compile Include="UnitTest.cs" />
     <Compile Include="StaticClass.cs" />
   </ItemGroup>
