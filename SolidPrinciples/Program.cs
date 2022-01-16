@@ -1,4 +1,5 @@
 ﻿using SolidPrinciples.ISP.Classes;
+using SolidPrinciples.LooseCoupling;
 using SolidPrinciples.LSP;
 using SolidPrinciples.OCP;
 using System;
@@ -11,10 +12,43 @@ namespace SolidPrinciples
 {
     class Program
     {
+        enum MessaeQueue
+        {
+            Rabbit = 10,
+            ApacheKafka = 18
+        }
+        const int const_workHours = 8;
+        static readonly int readonly_workHours;
+        static Program()
+        {
+            readonly_workHours = 10;
+        }
         static void Main(string[] args)
         {
+            
+            Console.WriteLine($"Employee work hour for a day is {readonly_workHours}");
+            Console.WriteLine($"Employee work hour for a day is {const_workHours}");
+
+            var days = new List<int>();
+            days.AddRange(new List<int> { 1, 2, 3, 4, 5, 6, 7 });
+
+            var daysThatAreOdd = days.Where(x => x % 2 != 0);
+            var daysThatAreEven = days.Where(x => x % 2 == 0);
+
+            // Loose Coupling using Interfaces
+            CustomerRepository cr;
+
+            cr = new CustomerRepository(new SqlDatabase());
+            cr.Add("Jagadish");
+
+            cr = new CustomerRepository(new XMLDatabase());
+            cr.Add("Palanivelu");
+
+            IBank bank = new Chase();
+            bank.Connect(); // Connect to bank BankOfAmerica
+
             Console.WriteLine("Single Responsibility Principle");
-            Console.WriteLine("-------------------------------");            
+            Console.WriteLine("-------------------------------");
 
             // Single Responsibility Principle
             DataAccess.InsertData();
@@ -30,7 +64,7 @@ namespace SolidPrinciples
                 Width = 3,
                 Height = 5
             };
-            Console.WriteLine("Area of a rectangle "+ rectangle.Area());
+            Console.WriteLine("Area of a rectangle " + rectangle.Area());
 
             Circle circle = new Circle
             {
@@ -65,7 +99,48 @@ namespace SolidPrinciples
             toyTrain.Run();
             toyTrain.Stop();
 
+            BMW b = new BMW();
+            b.StartEngine();
+            b.StopEngine();
+
             Console.ReadLine();
+        }
+    }
+
+    public abstract class Vehicle
+    {
+        public void StartEngine() { }
+    }
+
+    public abstract class Car : Vehicle
+    {
+        public void StopEngine() { }
+    }
+
+    public class BMW : Car
+    {
+
+    }
+
+    public interface IBank
+    {
+        void Connect();
+    }
+
+
+    public class Chase : IBank
+    {
+        public void Connect()
+        {
+            Console.WriteLine($"Connect to bank {this.GetType().Name}");
+        }
+    }
+
+    public class BankOfAmerica : IBank
+    {
+        public void Connect()
+        {
+            Console.WriteLine($"Connect to bank {this.GetType().Name}");
         }
     }
     public abstract class Fruit
@@ -74,7 +149,7 @@ namespace SolidPrinciples
     }
 
 
-    public class Apple: Fruit
+    public class Apple : Fruit
     {
         public override string GetColor()
         {
@@ -91,5 +166,5 @@ namespace SolidPrinciples
 
 
 
-    
+
 }
