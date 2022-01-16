@@ -57,6 +57,7 @@
     <Compile Include="OCP\Shape.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest.cs" />
     <Compile Include="StaticClass.cs" />
   </ItemGroup>
   <ItemGroup>
